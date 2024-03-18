@@ -8,7 +8,7 @@ class MyCounterPage extends StatefulWidget {
 }
 
 class _MyCounterPageState extends State<MyCounterPage> {
-   int _sayac= 3;
+  int _sayac = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +24,16 @@ class _MyCounterPageState extends State<MyCounterPage> {
               MyNewTextWidget(),
               Text(
                 _sayac.toString(),
-                style: TextStyle(fontSize: 48 , fontWeight: FontWeight.w400),),
+                style: TextStyle(fontSize: 48, fontWeight: FontWeight.w400),
+              ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
+          onPressed: () {
             sayaciArttir();
           },
-          child: Icon(
-            Icons.add
-          ),
+          child: Icon(Icons.add),
         ),
       ),
     );
@@ -42,13 +41,12 @@ class _MyCounterPageState extends State<MyCounterPage> {
 
   void sayaciArttir() {
     setState(() {
-      // ilgili widgetin buildi tetiklenmesini sağlar 
+      // ilgili widgetin buildi tetiklenmesini sağlar
       // bu yüzden
     });
     _sayac++;
   }
 }
-
 
 class MyNewTextWidget extends StatelessWidget {
   const MyNewTextWidget({
@@ -57,8 +55,9 @@ class MyNewTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Butona basılma miktarı",
-    style: TextStyle(fontSize: 24),
+    return Text(
+      "Butona basılma miktarı",
+      style: TextStyle(fontSize: 24),
     );
   }
 }
