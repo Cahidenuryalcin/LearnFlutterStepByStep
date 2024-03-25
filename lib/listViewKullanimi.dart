@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -46,7 +45,7 @@ class ListViewKullanimi extends StatelessWidget {
               );
             },
             onLongPress: () {
-              _alertDialogIslemleri(context);
+              _alertDialogIslemleri(context, oankiOgrenci);
             },
             title: Text(oankiOgrenci.isim),
             subtitle: Text(oankiOgrenci.soyisim),
@@ -102,23 +101,32 @@ class ListViewKullanimi extends StatelessWidget {
     );
   }
 
-  void _alertDialogIslemleri(BuildContext myContex) {
+  void _alertDialogIslemleri(BuildContext myContex, Ogrenci secilen) {
     showDialog(
+      barrierDismissible: false,
         context: myContex,
         builder: (contex) {
           return AlertDialog(
-            title: Text("dialog başlık"),
+            title: Text(secilen.toString()),
             content: SingleChildScrollView(
-             // child: Text("cahide nur yalçın " *200),
-             child: ListBody(
-              children: [
-                Text("cahide"*100),
-                Text("cahide1"*100),
-                Text("cahide2"*100),
-                Text("cahide3"*100),
-                ],),
+              // child: Text("cahide nur yalçın " *200),
+              child: ListBody(
+                children: [
+                  Text("cahide" * 100),
+                  Text("cahide1" * 100),
+                  Text("cahide2" * 100),
+                  Text("cahide3" * 100),
+                ],
+              ),
             ),
-            
+            actions: [
+              ButtonBar(children: [
+                TextButton(onPressed: () {
+                  Navigator.pop(contex);
+                }, child: Text("KAPAT")),
+                TextButton(onPressed: () {}, child: Text("TAMAM")),
+              ]),
+            ],
           );
         });
   }
@@ -130,4 +138,9 @@ class Ogrenci {
   final String soyisim;
 
   Ogrenci({required this.id, required this.isim, required this.soyisim});
+
+  @override
+  String toString() {
+    return "$id $isim $soyisim";
+  }
 }
